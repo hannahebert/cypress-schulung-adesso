@@ -1,19 +1,32 @@
-# JS Days Cypress Workshop
+# Cypress Schulung
 
-## Frontend
+## Starte Frontend
 
-To run the frontend in watch-mode do:
+Um das Frontend im Watch-Modus zu starten, führe aus:
 ```bash
-cd .. && npm i && npm start
+cd ./frontend && npm i && npm start
 ```
 
-## Backend
+## Starte Backend
 
-To run the backend in watch-mode do:
+Um das Backend im Watch-Modus zu starten, führe aus:
 ```bash
-cd ../../backend && npm i && npm start
+cd ./backend && npm i && npm start
 ```
+
+## Installation von Cypress
+
+1. Installiere Cypress als Dev-Dependency:
+    ```bash
+    cd .. && npm install --save-dev cypress
+    ```
+
+2. Öffne die Cypress Desktop App:
+    ```bash
+    npx cypress open
+    ```
+
 
 ## Cypress Übungen
 
-Die Cypress Übungen befinden sich in der `cypress`-Verzeichnisstruktur (`./frontend/cypress`).
+Die Cypress Übungen befinden sich in der `cypress`-Verzeichnisstruktur (`./frontend/cypress/e2e`).
