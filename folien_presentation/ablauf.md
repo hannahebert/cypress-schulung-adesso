@@ -13,18 +13,19 @@
 
 | Thema                          | Wo                                    |
 |--------------------------------|---------------------------------------|
-| Cypress Intro                  | Folien                                |
+| Cypress Intro                  | **Folien**                            |
 | `npm i --save-dev cypress`     | In console ausführen oder über README |
 | `npx cypress open`             | In console ausführen oder über README |
 | Launchpad erklären             | Launchpad                             |
 | Test Runner zeigen             | Testrunner UI                         |
-| Test: Login                    | Testrunner UI                         |
 | Angelegte Dateien zeigen       | Intellij                              |
 | App zeigen                     | Browser                               |
-| Testaufbau zeigen              | Folien                                |
+| Test: Login                    | Testrunner UI                         |
+| Testaufbau zeigen              | **Folien**                            |
 | Login Test: Visit + Assertions | Intellij dann Testrunner              |
 
-```
+
+```typescript 
 describe('login', () => {
   it('should successfully login', () => {
     cy.visit('http://localhost:4200/');
@@ -35,12 +36,13 @@ describe('login', () => {
 
 | Thema                                                         | Wo                           |
 |---------------------------------------------------------------|------------------------------|
-| Commands vs. Assertions                                       | Folien                       |
-| Commands -> Query/Non-Query                                   | Folien                       |
-| Chain of Commands                                             | Folien                       |
+| Commands vs. Assertions                                       | **Folien**                   |
+| Commands -> Query/Non-Query                                   | **Folien**                   |
+| Chain of Commands                                             | **Folien**                   |
 | Verbesserung Login Test > type, click mit Selector Playground | Intellij, SelectorPlayground |
 
-```
+
+```typescript 
 describe('login', () => {
   it('should successfully login', () => {
     cy.visit('http://localhost:4200/');
@@ -57,7 +59,7 @@ describe('login', () => {
 
 ### Übung 1: Login Test ###
 
-```
+```typescript 
 cy.get('[data-cy="login-form"]')
     .find('h3')
     .should('contain', 'Anmeldung');
@@ -69,7 +71,8 @@ cy.get('[data-cy="login-form"]')
 |-------------------------|-----------------------|
 | Find vs get vs contains | Folien, dann Intellij |
 
-```
+
+```typescript 
 cy.get('[data-cy="login-form"]')
     .find('h3')
     .should('contain', 'Anmeldung');
@@ -86,7 +89,10 @@ cy.get('[data-cy="login-form"]')
 |---------------------------------|----------|
 | Passwort in den Logs ausblenden | Intellij |
 
-```cy.get('[data-cy="password"]').type('cypress', {log: false});```
+
+```typescript 
+cy.get('[data-cy="password"]').type('cypress', {log: false});
+```
 
 | Thema                                   | Wo            |
 |-----------------------------------------|---------------|
@@ -98,10 +104,42 @@ cy.get('[data-cy="login-form"]')
 
 ### Übung 2: Bingo Feld ###
 
+
+### Custom Commands ###
 | Thema                                                           | Wo                      |
 |-----------------------------------------------------------------|-------------------------|
-| Test Click Bingo Feld (Aus login kopieren, Selector Playground) | Intellij, Testrunner UI |
 | Auslagern des Login Commands                                    | Folien, Intellij        |
+
+
+### Übung 3: Custom Commands ###
+
+### Retry Logic ###
+| Thema                                                           | Wo                      |
+|-----------------------------------------------------------------|-------------------------|
 | Retry Logic                                                     | Folien                  |
+
+### Screenshots ###
+
+```typescript 
+cy.get('[data-cy="winning-message"]').screenshot('winning-message');
+```
+
+### Videos ###
+
+cypress.config.ts
+
+```javascript
+{
+  "video": true
+}
+```
+
+### Intercept & requst ###
+
+```typescript
+
+### Abschluss ###
+| Thema                                                           | Wo                      |
+|-----------------------------------------------------------------|-------------------------|
 | Best Practices                                                  |                         |
 | Abschluss                                                       |                         |

@@ -193,7 +193,6 @@
             <section>
                 <h2>Automatisiertes Testen</h2>
                 <ul>
-                    <li>Automatisiert</li>
                     <li>Wiederholbar</li>
                     <li>Skalierbar</li>
                     <li>Zeitersparnis</li>
@@ -312,7 +311,7 @@
         </section>
         <section>
             <section data-background-image="./images/stars.jpg">
-                <h2>Testaufbau</h2>
+                <h1>Testaufbau</h1>
             </section>
             <section>
                 <pre data-id="code" class="javascript"><code data-line-numbers="1,12|2-4|6,11|7-10" class="hljs"
@@ -329,7 +328,7 @@
   })
 })
                 </code></pre>
-                <aside>$('.my-selector') --> jQuery</aside>
+                <aside class="notes">$('.my-selector') --> jQuery</aside>
             </section>
             <section>
                 <h2>Assertions vs. Commands</h2>
@@ -355,6 +354,31 @@
             </section>
         </section>
         <section>
+            <h1>Übung 1: Login</h1>
+            <h2>Zum Repo auf GitHub</h2>
+            <img class="r-stretch" src="images/qr-code-repo.png"/>
+            <p>https://github.com/hannahebert/cypress-schulung-adesso</p>
+        </section>
+        <section>
+            <h2>Get vs. Find vs. contains </h2>
+            <p><strong>cy.get()</strong> - Findet ein Element</p>
+            <p><strong>cy.find()</strong> - Findet ein Kind-Element</p>
+            <p><strong>cy.contains()</strong> - Findet ein Element anhand des Textes</p>
+
+            <pre data-id="code" class="javascript fragment"><code data-line-numbers class="hljs"
+            >cy.contains('Bingo');
+
+cy.get('[data-cy="login-form"]')
+    .find('h3')
+    .should('contain', 'Anmeldung');
+                </code></pre>
+        </section>
+
+        <section>
+            <h1>Übung 2: Bingo</h1>
+        </section>
+
+        <section>
             <section>
                 <h2>Custom Cypress Command: Login</h2>
                 <pre><code class="typescript" data-line-numbers="1-2,17|3-12|13-14|16"
@@ -378,6 +402,11 @@
     </code></pre>
             </section>
         </section>
+
+        <section>
+            <h1>Übung 3: Custom Command</h1>
+        </section>
+
         <section>
             <section>
                 <h2>Chain of Commands - Retry Logic</h2>
@@ -466,21 +495,99 @@
     ...
                 </code></pre>
             </section>
-            <section>
-                <h2>Get vs. Find vs. contains </h2>
-                <p><strong>cy.get()</strong> - Findet ein Element</p>
-                <p><strong>cy.find()</strong> - Findet ein Kind-Element</p>
-                <p><strong>cy.contains()</strong> - Findet ein Element anhand des Textes</p>
+        </section>
 
-                <pre data-id="code" class="javascript fragment"><code data-line-numbers class="hljs"
-                > cy.contains('Bingo');
-cy.get('[data-cy="login-form"]')
-    .find('h3')
-    .should('contain', 'Anmeldung');
+        <section>
+            <h1>Übung 4: Screenshot & Video</h1>
+        </section>
+
+        <section>
+            <section>
+                <h1>cy.request vs cy.intercept</h1>
+            </section>
+            <section>
+                <h2>cy.request – Direkt API testen</h2>
+                <p><strong>Zweck:</strong> HTTP-Anfragen direkt senden und prüfen.</p>
+                <p><strong>Einsatzgebiet:</strong></p>
+                <ul>
+                    <li>Backend-APIs testen</li>
+                    <li>Testdaten vorbereiten (z. B. Benutzer erstellen)</li>
+                    <li>Systemzustände prüfen</li>
+                </ul>
+            </section>
+            <section>
+                <h2>cy.request – Beispiel</h2>
+                <pre data-id="code" class="javascript"><code data-line-numbers="1,2|3,6|4,5" class="hljs"
+                >cy.request('POST', '/api/login',
+                    { username: 'test', password: 'test123' })
+  .then((response) => {
+    expect(response.status).to.eq(200);
+    expect(response.body).to.have.property('token');
+  });
                 </code></pre>
             </section>
+            <section>
+                <h2>cy.intercept – Netzwerkanfragen steuern</h2>
+                <p><strong>Zweck:</strong></p>
+                <ul>
+                    <li>Anfragen abfangen und Stub- oder Mock-Daten verwenden</li>
+                    <li>Netzwerkverkehr überwachen</li>
+                </ul>
+                <p><strong>Einsatzgebiet:</strong></p>
+                <ul>
+                    <li>API-Fehler simulieren</li>
+                    <li>Tests isolieren (kein echter Backend-Aufruf)</li>
+                    <li>Frontend-Integration testen</li>
+                </ul>
+            </section>
+            <section>
+                <h2>cy.intercept – Beispiel</h2>
+                <pre data-id="code" class="javascript"><code data-line-numbers="1,2|4|5,7|6" class="hljs"
+                >cy.intercept('GET', '/api/data', { fixture: 'data.json' })
+                    .as('getData');
+
+cy.visit('/dashboard');
+cy.wait('@getData').then((interception) => {
+  expect(interception.response.statusCode).to.eq(200);
+});
+                </code></pre>
+                <pre>
+
+    </pre>
+            </section>
+            <section>
+                <h2>cy.request vs cy.intercept</h2>
+                <table>
+                    <tr>
+                        <th>Merkmal</th>
+                        <th>cy.request</th>
+                        <th>cy.intercept</th>
+                    </tr>
+                    <tr>
+                        <td>Zweck</td>
+                        <td>Direkte HTTP-Anfragen senden</td>
+                        <td>Anfragen abfangen und manipulieren</td>
+                    </tr>
+                    <tr>
+                        <td>Browser-Interaktion</td>
+                        <td>Nicht erforderlich</td>
+                        <td>Browser-basiert</td>
+                    </tr>
+                    <tr>
+                        <td>Mocking möglich?</td>
+                        <td>Nein</td>
+                        <td>Ja</td>
+                    </tr>
+                    <tr>
+                        <td>Anwendungsbereich</td>
+                        <td>API-Tests, Datenvorbereitung</td>
+                        <td>Überwachen, Stubben, Mocking von Requests</td>
+                    </tr>
+                </table>
+            </section>
         </section>
-        <section data-background-image="./images/secret-plan.jpg">
+
+        <section data-background-image="./images/stars.jpg">
             <section>
                 <h2>Best Practices</h2>
             </section>
@@ -521,11 +628,6 @@ cy.get('[data-cy="login-form"]')
             <section>
                 <h2>Halte deine Testdaten realistisch und aktuell.</h2>
             </section>
-        </section>
-        <section>
-            <h2>Zum Repo auf GitHub</h2>
-            <img class="r-stretch" src="images/qr-code-repo.jpg"/>
-            <p>https://github.com/hannahebert/js_days_cypress</p>
         </section>
     </div>
 </div>

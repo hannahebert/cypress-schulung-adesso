@@ -1,7 +1,7 @@
 describe('login', () => {
   it('should successfully login', () => {
 
-    cy.visit('/');
+    cy.visit('http://localhost:4200/');
 
     cy.get('[data-cy="username"]')
       .type('cypress');

@@ -1,15 +1,15 @@
 # Cypress Schulung
 
-## Start Frontend
+## Starte Frontend
 
-To run the frontend in watch-mode do:
+Um das Frontend im Watch-Modus zu starten, führe aus:
 ```bash
 cd ./frontend && npm i && npm start
 ```
 
-## Backend
+## Starte Backend
 
-To run the backend in watch-mode do:
+Um das Backend im Watch-Modus zu starten, führe aus:
 ```bash
 cd ./backend && npm i && npm start
 ```

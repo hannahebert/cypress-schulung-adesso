@@ -1,5 +1,5 @@
 import {CyHttpMessages} from 'cypress/types/net-stubbing';
-import {BingoField} from '../../src/app/model/bingo-field.data';
+import {BingoField} from '../src/app/model/bingo-field.data';
 import IncomingHttpResponse = CyHttpMessages.IncomingHttpResponse;
 
 describe('Response', () => {
@@ -57,11 +57,10 @@ describe('Response', () => {
       // wir warten bis der Request tatsächlich aufgerufen wurde
       cy.wait('@vacationItems')
       // wir prüfen, ob alle Einträge mit &&& geprefixed wurden
-      cy.dataCy('bingo-field')
+      cy.get('[data-cy="bingo-field"]')
         .each(($bingoField) => {
           expect($bingoField.text().trim()).to.contain('&&&');
         });
     });
   });
-})
-;
+});
