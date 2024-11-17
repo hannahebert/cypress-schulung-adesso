@@ -13,7 +13,7 @@
     <script src="node_modules/reveal.js/plugin/markdown/markdown.js"></script>
 
     <style media="screen">
-        .slides section.has-dark-background,k
+        .slides section.has-dark-background, k
         .slides section.has-dark-background h2 {
             color: #fff;
         }
@@ -42,38 +42,34 @@
 <div class="reveal">
     <div class="slides">
         <section data-background-image="./images/stars.jpg">
-            <h1>Cypress</h1>
-            <p>Die Kunst der simplen E2E Tests</p>
-        </section>
-        <section>
-            <section>
-                <div class="r-hstack justify-center">
-                    <ul>
-                        <li>Milena Fluck</li>
-                        <li>adesso SE</li>
-                        <li>Senior Software Engineer</li>
-                    </ul>
-                    <img class="h-stack" src="images/milena2.jpg"/>
-                </div>
-            </section>
-            <section>
-                <div class="r-hstack justify-center">
-                    <ul>
-                        <li>Hannah Ebert</li>
-                        <li>adesso SE</li>
-                        <li>Software Architektin</li>
-                    </ul>
-                    <img class="h-stack" src="images/hannah.jpeg"/>
-                </div>
-            </section>
+            <h1>Effizientes E2E Testing mit Cypress</h1>
         </section>
         <section>
             <section data-background-image="./images/stars.jpg">
                 <h2>Agenda</h2>
                 <ul>
+                    <li>Vorstellungsrunde</li>
                     <li>Grundlagen Testing</li>
-                    <li>Cypress Intro</li>
-                    <li>Übungen</li>
+                    <li>Cypress Intro & Übungen</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Pausen</h2>
+                <ul>
+                    <li>10:30 - 10.45 Uhr</li>
+                    <li>12:15 - 13:15 Uhr</li>
+                    <li>14:45 - 15:00 Uhr</li>
+                    <li>16:00 - 16:10 Uhr</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Vorstellungsrunde</h2>
+                <ul>
+                    <li>Name</li>
+                    <li>Rolle bei adesso/im Projekt</li>
+                    <li>Standort</li>
+                    <li>Erwartungen für die Schulung</li>
+                    <li>...</li>
                 </ul>
             </section>
             <section data-background-image="./images/menti.png"></section>
@@ -87,8 +83,6 @@
             </section>
             <section>
                 <div class="r-vstack">
-                    <!--                <img class="fragment" src="./images/iphone_bug.jpeg"/>-->
-                    <!--            </div>-->
                     <h2>Der Apple Wecker Bug</h2>
                     <blockquote class="instagram-media" data-instgrm-captioned
                                 data-instgrm-permalink="https://www.instagram.com/reel/C6d_gc7IUbl/?utm_source=ig_embed&amp;utm_campaign=loading"
@@ -151,7 +145,6 @@
                                    target="_blank">Ein Beitrag geteilt von Samsung UK (@samsunguk)</a></p></div>
                     </blockquote>
                     <script async src="//www.instagram.com/embed.js"></script>
-                    <!--            <video data-autoplay src="./videos/Samsung-trolling-Apple-iPhone-alarm-bug.mp4"></video>-->
                 </div>
                 <aside class="notes">
                     https://osxdaily.com/2011/03/13/iphone-daylight-savings-time-bug-fall-back-instead-of-spring-forward/
@@ -230,32 +223,25 @@
                 <p>Wenn alle Units korrekt funktionieren, dann funktioniert auch die Applikation korrekt.</p>
             </section>
             <section>
-                <h2>Integration Testing</h2>
+                <h2>Integration Tests</h2>
             </section>
             <section>
-                <div class="r-hstack">
-                    <div>
-                        <h2>Integration Testing</h2>
-
-                        <p>Funktionieren die einzelnen Komponenten auch im Zusammenspiel miteinander?</p>
-                        <ul>
-                            <li>Verknüpfung von voneinander unabhängigen Komponenten</li>
-                            <li>Bspw. Verknüpfung von Daten, Anwendungen, APIs und Geräten</li>
-                        </ul>
-                    </div>
-                    <video data-autoplay src="videos/9zf0asd0c3n51.mp4"
-                    ></video>
-                </div>
+                <h2>Integration Tests</h2>
+                <p>Funktionieren die einzelnen Komponenten auch im Zusammenspiel miteinander?</p>
+                <video data-autoplay height="250px" src="videos/9zf0asd0c3n51.mp4"
+                ></video>
             </section>
             <section>
-                <h2>End-To-End Testing</h2>
+                <h2>End-To-End Tests</h2>
             </section>
             <section>
-                <h2>End-To-End Testing</h2>
+                <h2>End-To-End Tests</h2>
                 <ul>
                     <li>Simulieren das echte Nutzererlebnis</li>
                     <li>Werden oft von speziellen QA-Teams geschrieben</li>
-                    <li>Sind teuer und haben lange Ausführungszeiten => müssen sich lohnen</li>
+                    <li>Sind teuer und haben lange Ausführungszeiten
+                        > müssen sich lohnen
+                    </li>
                 </ul>
             </section>
             <section>
@@ -265,22 +251,6 @@
             <section>
                 <h2>Und was macht Cypress?</h2>
                 <img class="r-stretch" src="images/keine-harten-grenzen-cypress.png"/>
-            </section>
-            <section>
-                <h1>Testen – mal so ganz generell</h1>
-            </section>
-            <section>
-                <h2>Das Triple-A-Prinzip</h2>
-                <img class="r-stretch" src="images/triple-a.png"/>
-            </section>
-            <section data-visibility="hidden">
-                <h2>Erwartungen formulieren - mit Chai</h2>
-                <ul>
-                    <li>include</li>
-                    <li>exist</li>
-                    <li>equal</li>
-                    <li>be.true / be.false / be.bull</li>
-                </ul>
             </section>
         </section>
         <section>
@@ -296,7 +266,7 @@
                 <h2>Batteries included - Das Cypress Setup</h2>
                 <ul>
                     <li>Testing Framework: Mocha</li>
-                    <li>Assertion Library : Chai</li>
+                    <li>Assertion Library: Chai</li>
                     <li>Launcher/ Test Runner</li>
                     <li>Reporter</li>
                     <li>Browser: Electron</li>
@@ -354,6 +324,7 @@
   })
 })
                 </code></pre>
+                <aside>$('.my-selector') --> jQuery</aside>
             </section>
             <section>
                 <h2>Assertions vs. Commands</h2>
@@ -559,6 +530,7 @@ cy.get('[data-cy="login-form"]')
 <script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
 <script>
     Reveal.initialize({
+        slideNumber: true,
         autoPlayMedia: true,
         plugins: [RevealNotes, RevealHighlight],
     });
