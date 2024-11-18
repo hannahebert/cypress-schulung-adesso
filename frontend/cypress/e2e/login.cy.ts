@@ -1,17 +1,21 @@
 describe('login', () => {
   it('should successfully login', () => {
 
-    cy.visit('http://localhost:4200/');
+    cy.visit('');
 
     cy.get('[data-cy="username"]')
-      .type('cypress');
+      .type('cypress', { delay: 100 });
     cy.get('[data-cy="password"]')
       .type('bingo', { log: false });
 
     cy.get('[data-cy="submit-button"]').click();
 
-    cy.get('.header-container', { timeout: 10000 })
+    cy.get('.header-container')
+      .contains('Logout');
+
+    cy.get('.category-button-container')
       .find('button')
-      .should('exist');
+      .eq(1)
+      .click()
   })
 })
