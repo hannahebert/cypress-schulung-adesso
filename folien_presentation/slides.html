@@ -380,35 +380,6 @@ cy.get('[data-cy="login-form"]')
 
         <section>
             <section>
-                <h2>Custom Cypress Command: Login</h2>
-                <pre><code class="typescript" data-line-numbers="1-2,17|3-12|13-14|16"
-                >Cypress.Commands.add('login',(username: string,
-                    password: string): void => {
-  cy.visit('login');
-  cy.get('[data-cy="username"]')
-    .type('cypress', {log: false});
-  cy.get('[data-cy="password"]')
-    .type('bingo', {log: false});
-
-  cy.get('[data-cy="submit-button"]')
-    .click()
-    .should('not.exist');
-
-  cy.url()
-    .should('eq', `${Cypress.config().baseUrl}/bingo-board`);
-
-  cy.get('.board-title').should('have.text', 'Bingo');
-});
-    </code></pre>
-            </section>
-        </section>
-
-        <section>
-            <h1>Übung 3: Custom Command</h1>
-        </section>
-
-        <section>
-            <section>
                 <h2>Chain of Commands - Retry Logic</h2>
             </section>
             <section data-auto-animate>
@@ -495,6 +466,35 @@ cy.get('[data-cy="login-form"]')
     ...
                 </code></pre>
             </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Custom Cypress Command: Login</h2>
+                <pre><code class="typescript" data-line-numbers="1-2,17|3-12|13-14|16"
+                >Cypress.Commands.add('login',(username: string,
+                    password: string): void => {
+  cy.visit('login');
+  cy.get('[data-cy="username"]')
+    .type('cypress', {log: false});
+  cy.get('[data-cy="password"]')
+    .type('bingo', {log: false});
+
+  cy.get('[data-cy="submit-button"]')
+    .click()
+    .should('not.exist');
+
+  cy.url()
+    .should('eq', `${Cypress.config().baseUrl}/bingo-board`);
+
+  cy.get('.board-title').should('have.text', 'Bingo');
+});
+    </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <h1>Übung 3: Custom Command</h1>
         </section>
 
         <section>
