@@ -1,6 +1,6 @@
 import {CyHttpMessages} from "cypress/types/net-stubbing";
 import IncomingHttpRequest = CyHttpMessages.IncomingHttpRequest;
-import {BingoField} from "../../src/app/model/bingo-field.data";
+import {BingoField} from "../src/app/model/bingo-field.data";
 
 describe('Bingo', () => {
 
