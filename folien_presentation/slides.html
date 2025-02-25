@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Cypress - Die Kunst der simplen E2E Tests</title>
+    <title>Testing im Frontend</title>
 
     <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/dracula.css" id="theme">
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/white.css" id="theme">
     <link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css">
 
     <script src="node_modules/reveal.js/plugin/markdown/markdown.js"></script>
@@ -30,23 +30,40 @@
             -webkit-tab-size: 1;
         }
 
-        .highlight {
-            color: #BD93F9;
+        h1, h2, h3, h4, h5, h6 {
+            color: #006ec7 !important;
         }
+
+
+        .highlight {
+            color: #006ec7;
+        }
+
+        .small-text {
+            font-size: 0.8em;
+        }
+
+        .custom-height-slide pre code {
+            white-space: pre-wrap;
+            max-height: 500px;
+            overflow-y: visible;
+        }
+    </style>
     </style>
 </head>
 <body>
 <div class="reveal">
     <div class="slides">
-        <section data-background-image="./images/stars.jpg">
-            <h1>Effizientes E2E Testing mit Cypress</h1>
+        <section>
+            <h1>Testing im Frontend</h1>
         </section>
         <section>
-            <section data-background-image="./images/stars.jpg">
+            <section>
                 <h2>Agenda</h2>
                 <ul>
                     <li>Vorstellungsrunde</li>
                     <li>Grundlagen Testing</li>
+                    <li>Testen im Frontend</li>
                     <li>Cypress Intro</li>
                     <li>Cypress Übungen</li>
                 </ul>
@@ -54,13 +71,10 @@
             <section>
                 <h2>Pausen</h2>
                 <ul>
-                    <li>09:00 - 09.50 Uhr</li>
-                    <li>10:05 - 10:50 Uhr</li>
-                    <li>11:05 - 12:00 Uhr</li>
-                    <li>13:00 - 13:50 Uhr</li>
-                    <li>14:05 - 14:50 Uhr</li>
-                    <li>15:05 - 15:50 Uhr</li>
-                    <li>16:05 - 17:00 Uhr</li>
+                    <li>09:00 - 10.30 Uhr</li>
+                    <li>10:45 - 12:00 Uhr</li>
+                    <li>13:00 - 14:30 Uhr</li>
+                    <li>14:45 - 17:00 Uhr</li>
                 </ul>
             </section>
             <section>
@@ -72,11 +86,10 @@
                     <li>...</li>
                 </ul>
             </section>
-<!--            TODO menti-->
-            <section data-background-image="./images/menti.png"></section>
+            <section data-background-image="./images/menti.png" data-background-size="80%"></section>
         </section>
         <section>
-            <section data-background-image="./images/stars.jpg">
+            <section>
                 <h1>Grundlagen Testing</h1>
             </section>
             <section>
@@ -102,8 +115,8 @@
                 </div>
             </section>
             <section>
-                <h2>Regressionstests/h2>
-                Deine Kolleg*innen (und dein Zukunfts-Ich) werden es dir danken, wenn sie neue Features hinzufügen
+                <h2>Regressionstests</h2>
+                Andere Devs (und dein Zukunfts-Ich) werden es dir danken, wenn sie neue Features hinzufügen
                 können, ohne vorhandene kaputtzumachen.
             </section>
             <section>
@@ -126,11 +139,19 @@
                 <h2>Was sind Grenzfälle?</h2>
                 <ul>
                     <li class="fragment"><span class="highlight">Ungültige Eingaben</span>: Buchstaben statt Zahlen</li>
-                    <li class="fragment"><span class="highlight">Ungewöhnliche Nutzung</span>: z.B. extrem hohe oder niedrige Werte</li>
-                    <li class="fragment"><span class="highlight">Ressourcenprobleme</span>: Ressource (z.B. Internetverbindung) ist nicht verfügbar.</li>
-                    <li class="fragment"><span class="highlight">Leistungsgrenzen</span>: Sehr hohen Anzahl von Anfragen oder Daten</li>
+                    <li class="fragment"><span class="highlight">Ungewöhnliche Nutzung</span>: z.B. extrem hohe oder
+                        niedrige Werte
+                    </li>
+                    <li class="fragment"><span class="highlight">Ressourcenprobleme</span>: Ressource (z.B.
+                        Internetverbindung) ist nicht verfügbar.
+                    </li>
+                    <li class="fragment"><span class="highlight">Leistungsgrenzen</span>: Sehr hohen Anzahl von Anfragen
+                        oder Daten
+                    </li>
                     <li class="fragment"><span class="highlight">Sicherheitslücken</span></li>
-                    <li class="fragment"><span class="highlight">Kompatibilitätsprobleme</span>: Nutzung des Systems auf nicht unterstützten Geräten oder Browsern.</li>
+                    <li class="fragment"><span class="highlight">Kompatibilitätsprobleme</span>: Nutzung des Systems auf
+                        nicht unterstützten Geräten oder Browsern.
+                    </li>
                 </ul>
             </section>
             <section>
@@ -154,7 +175,9 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
                 <h2>Dokumentation</h2>
                 Weil niemand Lust hat, nach einem Jahr wieder herauszufinden, was ‘doSomething()’ eigentlich tut.
             </section>
-            <section><h2>Graue Theorie</h2></section>
+        </section>
+        <section>
+            <section><h1>Wie kann ich testen?</h1></section>
             <section>
                 <h3>Automatisiertes Testen</h3>
                 <p>vs.</p>
@@ -163,20 +186,20 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
             <section>
                 <h2>Manuelles Testen</h2>
                 <ul>
-                    <li>Zeitaufwändig</li>
-                    <li>Monoton</li>
-                    <li>Fehleranfällig</li>
-                    <li>Subjektiv</li>
-                    <li>Teuer</li>
+                    <li class="fragment">Zeitaufwändig</li>
+                    <li class="fragment">Monoton</li>
+                    <li class="fragment">Fehleranfällig</li>
+                    <li class="fragment">Subjektiv</li>
+                    <li class="fragment">Teuer</li>
                 </ul>
             </section>
             <section>
                 <h2>Automatisiertes Testen</h2>
                 <ul>
-                    <li>Wiederholbar</li>
-                    <li>Skalierbar</li>
-                    <li>Zeitersparnis</li>
-                    <li>Qualitätssicherung</li>
+                    <li class="fragment">Wiederholbar</li>
+                    <li class="fragment">Skalierbar</li>
+                    <li class="fragment">Zeitersparnis</li>
+                    <li class="fragment">Qualitätssicherung</li>
                 </ul>
             </section>
             <section>
@@ -189,29 +212,281 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
                 <p class="fragment">Automatisiert</p>
                 <p class="fragment">Isoliert</p>
             </section>
-            <section data-background-image="./images/unit.jpg">
+            <section>
                 <h3>Was ist eine Unit?</h3>
                 <p class="fragment">Der kleinste Baustein einer Applikation</p>
-                <p class="fragment">Funktion/ Klasse</p>
+                <p class="fragment">z.B. Funktion/Klasse</p>
             </section>
             <section>
-                <h2>Grundannahme:</h2>
-                <p>Wenn alle Units korrekt funktionieren, dann funktioniert auch die Applikation korrekt.</p>
+                <h2>Grundannahme Unit Testing:</h2>
+                <p>Wenn <b class="highlight">alle Units</b> korrekt funktionieren, dann funktioniert auch die <b
+                        class="highlight">gesamteApplikation</b> korrekt.</p>
+            </section>
+            <section>
+                <h2>Vorteile von Unit Testing</h2>
+                <ul>
+                    <li class="fragment">Geringere Komplexität des Codes führt zu geringerer Komplexität des Tests</li>
+                    <li class="fragment">Code wird lesbarer</li>
+                    <li class="fragment">Testcode ist einfacher zu implementieren</li>
+                    <li class="fragment">Testcode schneller automatisiert ausführbar</li>
+                </ul>
             </section>
             <section>
                 <h2>Integration Tests</h2>
+                <video data-autoplay height="250px" src="videos/9zf0asd0c3n51.mp4"></video>
                 <p class="fragment">Funktionieren die einzelnen Komponenten auch im Zusammenspiel miteinander?</p>
-                <video class="fragment" data-autoplay height="250px" src="videos/9zf0asd0c3n51.mp4"></video>
             </section>
             <section>
                 <h2>End-To-End Tests</h2>
                 <ul>
                     <li class="fragment">Simulieren das echte Nutzererlebnis</li>
-                    <li class="fragment">Werden oft von speziellen QA-Teams geschrieben</li>
-                    <li class="fragment">Sind teuer und haben lange Ausführungszeiten
-                        > müssen sich lohnen
+                    <li class="fragment">Testen ganzheitliche Geschäftsabläufe</li>
+                    <li class="fragment"><b class="highlight">Ziel:</b> Aufdeckung von Fehlern aus Benutzersicht</li>
+                    <li class="fragment"><b class="highlight">Nachteil:</b> E2E-Tests sind teuer und haben lange
+                        Ausführungszeiten, müssen sich also lohnen,
                     </li>
                 </ul>
+            </section>
+            <section>
+                <h2>Keine harten Grenzen</h2>
+                <img class="r-stretch" src="images/keine-harten-grenzen.png"/>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Macht Testing im Frontend überhaupt Sinn?</h2>
+                <p class="fragment">⚠️ Achtung Spoiler</p>
+                <p class="fragment"><b class="highlight">Definitiv 😉</b></p>
+            </section>
+            <section>
+                <h2>Wie kann ich Unit-Tests im Frontend sinnvoll nutzen?</h2>
+                <ul>
+                    <li class="fragment">Testen von isolierten Einheiten wie Pipes, Direktiven, Services und Methoden in
+                        Komponenten
+                    </li>
+                    <li class="fragment">Abhängigkeiten werden nicht betrachten bzw gemockt</li>
+                    <li class="fragment">Es können sehr einfach Grenzfälle getestet werden</li>
+                    <li class="fragment"><b class="highlight">Beispiel:</b> Prüfen, ob eine Pipe die erwartete
+                        Transformation durchführt
+                    </li>
+                    <li class="fragment"><b class="highlight">Tools:</b> z.B. mit Jest/Karma mit Angular Testing Library
+                        oder Spectator
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h4>Beispiel</h4>
+                <p>Wir prüfen, ob eine Pipe die erwartete Transformation durchführt</p>
+                <pre><code class="typescript" data-line-numbers>
+import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({name: 'decimalFormat'})
+export class DecimalFormatPipe implements PipeTransform {
+    transform(value: number | undefined): string {
+        if (value === undefined) {
+            return 'N/A';
+        }
+        return value.toLocaleString('de-DE', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2});
+    }
+}</code></pre>
+            </section>
+
+            <section class="custom-height-slide">
+                <h4>Beispiel</h4>
+                <p>Wir prüfen, ob eine Pipe die erwartete Transformation durchführt</p>
+                <pre><code class="typescript" data-line-numbers>// Test mit Jest
+import { DecimalFormatPipe } from './decimal-format.pipe';
+
+describe('DecimalFormatPipe', () => {
+    const pipe = new DecimalFormatPipe();
+
+    it('should format number to German format', () => {
+        expect(pipe.transform(17.93)).toBe('17,93');
+    });
+
+    it('should return "N/A" for undefined', () => {
+        expect(pipe.transform(undefined)).toBe('N/A');
+    });
+
+    it('should format number without decimal places', () => {
+        expect(pipe.transform(17)).toBe('17,00');
+    });
+});</code></pre>
+            </section>
+            <section>
+                <h2>Wie kann ich Integration Tests im Frontend schreiben?</h2>
+                <ul>
+                    <li class="fragment"><b>DOM-Tests</b>: Überprüfen, ob die DOM-Struktur und Inhalte korrekt
+                        gerendert
+                        werden.
+                    </li>
+                    <li class="fragment"><b>Snapshot-Tests</b>: Erfassen und Vergleichen des HTML-Outputs, um
+                        unerwartete Änderungen zu erkennen.
+                    </li>
+                    <li class="fragment"><b>Component-Tests</b>: Testen von Komponenten in Isolation, aber mit
+                        Template-Rendering, um sicherzustellen, dass sie wie erwartet funktionieren.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Component-Tests (Angular Testing Library, Jest, Karma)</h2>
+                <ul>
+                    <li class="fragment">Testet Komponenten in Isolation, aber mit Template-Rendering</li>
+                    <li class="fragment">Beispiel: Prüfen, ob ein Button-Click eine bestimmte Aktion auslöst</li>
+                    mit was? Cypress component testing --> wenn nicht auch mit jest snapshots möglich
+                </ul>
+            </section>
+
+            <section>
+                <h2>Snapshot Testing</h2>
+                <ul>
+                    <li class="fragment"><b>Snapshot</b> = UI Rendering Ergebnis</li>
+                    <li class="fragment"><b>Referenzwert:</b> Sieht die UI nach Veränderungen noch so aus wie
+                        vorher?
+                    </li>
+                    <li class="fragment"><b>Ziel:</b> Absichern visueller Konsistenz (z. B. Positionierung von
+                        Elementen, Farben, Typografie)
+                    </li>
+                </ul>
+                <h3>Beispiel für einen Snapshot-Test mit Jest:</h3>
+                <pre><code class="typescript" data-line-numbers>
+import { render } from '@testing-library/angular';
+import { MyComponent } from './my-component.component';
+
+test('MyComponent Snapshot', async () => {
+  const { container } = await render(MyComponent);
+  expect(container).toMatchSnapshot();
+});
+    </code></pre>
+            </section>
+
+            <section>
+                <h2>Snapshot Testing</h2>
+                <h3>Vorteile</h3>
+                <ul>
+                    <li class="fragment">Einfache Implementierung</li>
+                    <li class="fragment">Schnelle Überprüfung von UI-Änderungen</li>
+                    <li class="fragment">Automatische Erkennung von unbeabsichtigten Änderungen</li>
+                </ul>
+                <!--            </section>-->
+                <!--            <section>-->
+                <h3>Nachteile</h3>
+                <ul>
+                    <li class="fragment">Kann zu falschen Positiven führen</li>
+                    <li class="fragment">Snapshots können groß und unübersichtlich werden</li>
+                    <li class="fragment">Erfordert regelmäßige Aktualisierung der Snapshots</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Domain Object Model (DOM) Testing</h2>
+                <p><b class="highlight">Definition:</b> DOM-Tests sind Tests, die sicherstellen, dass
+                    JavaScript-Code
+                    korrekt mit dem Document Object Model
+                    (DOM) einer Webseite interagiert, indem er Elemente hinzufügt, entfernt oder verändert und dabei
+                    das
+                    Verhalten des Browsers simuliert.</p>
+            </section>
+
+            <section>
+                <h3>Wofür schreibe ich DOM Tests?</h3>
+                <ul>
+                    <li class="fragment">Wenn du sicherstellen möchtest, dass Events wie Klicks, Eingaben oder
+                        Änderungen korrekt behandelt werden.
+                    </li>
+                    <li class="fragment">Bei der Überprüfung von Formvalidierungen oder Interaktionen innerhalb von
+                        Formularen.
+                    </li>
+                    <li class="fragment">Um zu testen, ob dynamische Inhalte, die durch JavaScript eingefügt werden,
+                        korrekt angezeigt werden.
+                    </li>
+                    <li class="fragment">Wenn du sicherstellen möchtest, dass UI-Komponenten (wie Modals, Dropdowns
+                        oder
+                        Tooltips) korrekt funktionieren und anzeigen.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>ButtonComponent</h2>
+                <pre><code class="typescript" data-line-numbers>
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-button',
+  template: `<button (click)="handleClick()">Klick mich!</button>`,
+})
+export class ButtonComponent {
+  handleClick() {
+    console.log('Button wurde geklickt!');
+  }
+}
+    </code></pre>
+            </section>
+
+            <section>
+                <h2>ButtonComponent Test</h2>
+                <pre><code class="typescript" data-line-numbers>
+import { render, fireEvent } from '@testing-library/angular';
+import { ButtonComponent } from './button.component';
+
+test('ButtonComponent sollte einen Konsolenausdruck bei Klick auslösen', async () => {
+  const { getByText } = await render(ButtonComponent);
+  const button = getByText('Klick mich!');
+
+  // Mock für console.log
+  const consoleSpy = jest.spyOn(console, 'log');
+
+  // Klick-Event auslösen
+  fireEvent.click(button);
+
+  // Überprüfen, ob console.log mit dem erwarteten Text aufgerufen wurde
+  expect(consoleSpy).toHaveBeenCalledWith('Button wurde geklickt!');
+});
+    </code></pre>
+            </section>
+            <section>
+                <h2>DOM Testing</h2>
+                <h3>Vorteile</h3>
+                <ul>
+                    <li class="fragment">Detaillierte Überprüfung der DOM-Struktur</li>
+                    <li class="fragment">Simuliert Benutzerinteraktionen</li>
+                    <li class="fragment">Erkennt Fehler in der Benutzeroberfläche</li>
+                </ul>
+                <!--            </section>-->
+                <!--            <section>-->
+                <h3>Nachteile</h3>
+                <ul>
+                    <li class="fragment">Komplexere Implementierung</li>
+                    <li class="fragment">Kann langsamer sein als Snapshot-Tests</li>
+                    <li class="fragment">Erfordert mehr Wartung</li>
+                </ul>
+            </section>
+
+            <section>
+                Integrationstests (z. B. mit Cypress oder Playwright)
+                Testet die Zusammenarbeit mehrerer Komponenten oder API-Interaktionen.
+                Beispiel: Prüfen, ob eine GraphQL-Abfrage korrekt verarbeitet und angezeigt wird.
+
+            </section>
+
+            <section>
+                <h2>End-To-End Tests</h2>
+                <p>Simulieren das echte Nutzererlebnis.</p>
+                <p>Testen ganzheitliche Geschäftsabläufe.</p>
+                <p><b>Ziel:</b> Aufdeckung von Fehlern aus Benutzersicht.</p>
+                <p><b>Nachteil:</b> E2E-Tests sind teuer und haben lange Ausführungszeiten, müssen sich also lohnen.
+                </p>
+            </section>
+
+        </section>
+        <section>
+            <section data-background-image="./images/stars.jpg">
+                <img class="r-stretch" src="images/Cypress_Logotype_White-Color.png"/>
+
             </section>
             <section>
                 <h2>Keine harten Grenzen</h2>
@@ -220,12 +495,6 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
             <section>
                 <h2>Und was macht Cypress?</h2>
                 <img class="r-stretch" src="images/keine-harten-grenzen-cypress.png"/>
-            </section>
-        </section>
-        <section>
-            <section data-background-image="./images/stars.jpg">
-                <img class="r-stretch" src="images/Cypress_Logotype_White-Color.png"/>
-
             </section>
             <section data-background-image="./images/vacation.jpg" class="has-dark-background">
                 <h1>Developer Experience</h1>
@@ -258,9 +527,9 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
             <section>
                 <h2>Wundervolle Dokumentation</h2>
                 <ul>
-                    <li>... um Cypress zu lernen.</li>
-                    <li>... um die Best Practices zu erfahren.</li>
-                    <li>... um CI aufzusetzen.</li>
+                    <li>... um Cypress zu lernen</li>
+                    <li>... um die Best Practices zu erfahren</li>
+                    <li>... um CI aufzusetzen</li>
                     <li>...</li>
                 </ul>
             </section>
@@ -302,8 +571,10 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
             </section>
             <section>
                 <h2>Assertions vs. Commands</h2>
-                <p class="fragment"><strong>Commands</strong> sind Aktionen, die auf der Seite ausgeführt werden.</p>
-                <p class="fragment"><strong>Assertions</strong> sind Überprüfungen, die das Verhalten der Seite testen.
+                <p class="fragment"><strong>Commands</strong> sind Aktionen, die auf der Seite ausgeführt werden
+                </p>
+                <p class="fragment"><strong>Assertions</strong> sind Überprüfungen, die das Verhalten der Seite
+                    testen.
                 </p>
                 <pre data-id="code" class="javascript fragment"><code data-line-numbers class="hljs"
                 >cy.get('my-selector')           // Command
@@ -525,7 +796,7 @@ cy.wait('@getData').then((interception) => {
 
     </pre>
             </section>
-            <section>
+            <section class="small-text">
                 <h2>cy.request vs cy.intercept</h2>
                 <table>
                     <tr>
@@ -572,7 +843,7 @@ cy.wait('@getData').then((interception) => {
             <section>
                 <h2>DRY - Don't repeat yourself (too often)</h2>
                 <p>Verwende Custom Commands - Erstelle wiederverwendbare Befehle für häufige Aktionen, um den Testcode
-                    zu vereinfachen.</p>
+                    zu vereinfachen</p>
             </section>
             <section>
                 <h1>Aber</h1>
