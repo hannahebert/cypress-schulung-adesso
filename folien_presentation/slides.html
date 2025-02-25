@@ -48,7 +48,14 @@
             max-height: 500px;
             overflow-y: visible;
         }
-    </style>
+
+        .adesso-logo {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 3em;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -871,6 +878,8 @@ cy.wait('@getData').then((interception) => {
             </section>
         </section>
     </div>
+
+    <img src="images/adesso-logo.png" class="adesso-logo" alt="adesso Logo">
 </div>
 
 <script src="node_modules/reveal.js/dist/reveal.js"></script>
