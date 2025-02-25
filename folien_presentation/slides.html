@@ -114,7 +114,7 @@
                 <h2>5 Gründe, warum Tests unsere Nerven (und Projekte) retten</h2>
             </section>
             <section>
-                <h2>Bugs möglichst früh finden</h2>
+                <h2>1. Bugs möglichst früh finden</h2>
                 <img class="slider-stretch" src="images/bugs-finden.png" alt="Bugs finden">
                 <div class="fragment">Je früher ein Fehler gefunden wird, desto <span class="highlight">einfacher</span>,
                     <span class="highlight">schneller</span> und damit auch
@@ -122,25 +122,27 @@
                 </div>
             </section>
             <section>
-                <h2>Regressionstests</h2>
-                Andere Devs (und dein Zukunfts-Ich) werden es dir danken, wenn sie neue Features hinzufügen
-                können, ohne vorhandene kaputtzumachen.
+                <h2>2. Langfristige Absicherung durch Regressionstests</h2>
+                <p class="fragment">Neue Features können hinzugefügt werden, ohne bestehende Funktionalitäten zu
+                    gefährden.</p>
             </section>
             <section>
                 <h2>Was ist besser testbar?</h2>
                 <div style="display: flex; align-items: center; justify-content: center;">
-                    <img src="images/network-switch-unorganized.png" alt="Network Switch 1" style="margin-right: 20px;">
-                    <h3>vs.</h3>
-                    <img src="images/network-switch-organized.png" alt="Network Switch 2" style="margin-left: 20px;">
+                    <img class="fragment" src="images/network-switch-unorganized.png" alt="Network Switch 1" height="400px"
+                         style="margin-right: 20px;">
+                    <h3 class="fragment">vs.</h3>
+                    <img class="fragment" src="images/network-switch-organized.png" alt="Network Switch 2"
+                         style="margin-left: 20px;">
                 </div>
             </section>
             <section>
-                <h2>Wartbarkeit erhöhen</h2>
+                <h2>3. Wartbarkeit erhöhen</h2>
                 <p class="fragment">Tests führen oft dazu, dass Code modular und verständlich geschrieben wird.</p>
             </section>
             <section>
-                <h2>Grenzfälle abtesten</h2>
-                Weil es immer jemanden gibt, der Dinge anders benutzt, als sie gedacht sind.
+                <h2>4. Grenzfälle abtesten</h2>
+                <p class="fragment">Weil es immer jemanden gibt, der Dinge anders benutzt, als sie gedacht sind.</p>
             </section>
             <section>
                 <h2>Was sind Grenzfälle?</h2>
@@ -162,7 +164,8 @@
                 </ul>
             </section>
             <section>
-    <pre><code class="javascript" data-line-numbers="1-9|11|12|13|14">const divide = (a, b) => {
+                <h2>Beispiel Grenzfälle</h2>
+                <pre><code class="javascript" data-line-numbers="1-9|11|12|13|14">const divide = (a, b) => {
     if (typeof a !== 'number' || typeof b !== 'number') {
         return 'Eingaben müssen Zahlen sein';
     }
@@ -179,8 +182,9 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
     </code></pre>
             </section>
             <section>
-                <h2>Dokumentation</h2>
-                Weil niemand Lust hat, nach einem Jahr wieder herauszufinden, was ‘doSomething()’ eigentlich tut.
+                <h2>5. Dokumentation</h2>
+                <p class="fragment">Weil niemand Lust hat, nach einem Jahr wieder herauszufinden, was ‘doSomething()’
+                    eigentlich tut.</p>
             </section>
         </section>
         <section>
