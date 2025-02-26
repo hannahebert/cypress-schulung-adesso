@@ -70,10 +70,22 @@
                 <h2>Agenda</h2>
                 <ul>
                     <li>Vorstellungsrunde</li>
-                    <li>Grundlagen Testing</li>
-                    <li>Testen im Frontend</li>
-                    <li>Cypress Intro</li>
-                    <li>Cypress Übungen</li>
+                    <li>Grundlagen Testing
+                        <ul>
+                            <li>Warum testen wir überhaupt?</li>
+                            <li>Testarten</li>
+                        </ul>
+                    </li>
+                    <li>Testen im Frontend
+                        <ul>
+                            <li>Überblick</li>
+                            <li>Instantiierungstest</li>
+                            <li>Testabdeckung</li>
+                            <li>Gute Tests</li>
+                            <li>Stubs, Spies, Mocks</li>
+                        </ul>
+                    </li>
+                    <li>Cypress + Übungen</li>
                 </ul>
             </section>
             <section>
@@ -81,8 +93,8 @@
                 <ul>
                     <li>09:00 - 10.30 Uhr</li>
                     <li>10:45 - 12:30 Uhr</li>
-                    <li>13:00 - 14:30 Uhr</li>
-                    <li>14:45 - 17:00 Uhr</li>
+                    <li>13:30 - 15:00 Uhr</li>
+                    <li>15:15 - 17:00 Uhr</li>
                 </ul>
             </section>
             <section>
@@ -690,7 +702,7 @@ describe('MyService', () => {
                 </ul>
             </section>
             <section>
-    <pre><code class="typescript" data-line-numbers="4-6|8-9|11-12">import { add } from './math';
+    <pre><code class="typescript" data-line-numbers="1-3,13|4-6|8-9|11-12">import { add } from './math';
 
 test('add function should return correct sum', () => {
     // Arrange
@@ -1134,6 +1146,12 @@ cy.wait('@getData').then((interception) => {
             </section>
             <section>
                 <h2>Halte deine Testdaten realistisch und aktuell.</h2>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Danke fürs Zuhören :)</h2>
+                <p>Bei kleineren Nachfragen meldet euch gerne unter hannah.ebert@adesso.de</p>
             </section>
         </section>
     </div>
