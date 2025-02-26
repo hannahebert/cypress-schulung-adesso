@@ -46,6 +46,7 @@
         .custom-height-slide pre code {
             white-space: pre-wrap;
             max-height: 500px;
+            max-height: 1500px;
             overflow-y: visible;
         }
 
@@ -189,14 +190,17 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
             </section>
         </section>
         <section>
-            <section><h1>Wie kann ich testen?</h1></section>
+            <section><h1>Testarten</h1></section>
             <section>
-                <h3>Automatisiertes Testen</h3>
+                <h2>Automatisiertes Testen</h2>
                 <p>vs.</p>
-                <h3>Manuelles Testen</h3>
+                <h2>Manuelles Testen</h2>
             </section>
             <section>
                 <h2>Manuelles Testen</h2>
+                <p class="fragment">... ist der Prozess, bei dem <b class="highlight">Tester</b> Software <b
+                        class="highlight">manuell</b> ausführen, um Fehler zu finden. Es
+                    erfordert keine Automatisierungstools.</p>
                 <ul>
                     <li class="fragment">Zeitaufwändig</li>
                     <li class="fragment">Monoton</li>
@@ -207,11 +211,13 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
             </section>
             <section>
                 <h2>Automatisiertes Testen</h2>
+                <p class="fragment">... ist der Prozess, bei dem Tests mithilfe von
+                    <b class="highlight">Software-Tools automatisch</b> ausgeführt werden, um die Funktionalität und
+                    Qualität der Software sicherzustellen.</p>
                 <ul>
                     <li class="fragment">Wiederholbar</li>
                     <li class="fragment">Skalierbar</li>
-                    <li class="fragment">Zeitersparnis</li>
-                    <li class="fragment">Qualitätssicherung</li>
+                    <li class="fragment">Zeitsparend</li>
                 </ul>
             </section>
             <section>
@@ -225,22 +231,27 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
                 <p class="fragment">Isoliert</p>
             </section>
             <section>
-                <h3>Was ist eine Unit?</h3>
+                <h2>Was ist eine Unit?</h2>
                 <p class="fragment">Der kleinste Baustein einer Applikation</p>
-                <p class="fragment">z.B. Funktion/Klasse</p>
+                <p class="fragment">z.B. Funktionen oder Klassen</p>
             </section>
             <section>
                 <h2>Grundannahme Unit Testing:</h2>
                 <p>Wenn <b class="highlight">alle Units</b> korrekt funktionieren, dann funktioniert auch die <b
-                        class="highlight">gesamteApplikation</b> korrekt.</p>
+                        class="highlight">gesamte Applikation</b> korrekt.</p>
             </section>
             <section>
                 <h2>Vorteile von Unit Testing</h2>
                 <ul>
-                    <li class="fragment">Geringere Komplexität des Codes führt zu geringerer Komplexität des Tests</li>
-                    <li class="fragment">Code wird lesbarer</li>
-                    <li class="fragment">Testcode ist einfacher zu implementieren</li>
-                    <li class="fragment">Testcode schneller automatisiert ausführbar</li>
+                    <li class="fragment"><span class="highlight">Frühes Erkennen von Fehlern:</span> Fehler können
+                        frühzeitig im Entwicklungsprozess entdeckt und behoben werden
+                    </li>
+                    <li class="fragment"><span class="highlight">Modularität:</span> Unit Tests fördern die Entwicklung
+                        modularen und wartbaren Codes
+                    </li>
+                    <li class="fragment"><span class="highlight">Schnelle Rückmeldung:</span> Entwickler erhalten
+                        schnell Rückmeldung über die Korrektheit ihres Codes
+                    </li>
                 </ul>
             </section>
             <section>
@@ -255,7 +266,7 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
                     <li class="fragment">Testen ganzheitliche Geschäftsabläufe</li>
                     <li class="fragment"><b class="highlight">Ziel:</b> Aufdeckung von Fehlern aus Benutzersicht</li>
                     <li class="fragment"><b class="highlight">Nachteil:</b> E2E-Tests sind teuer und haben lange
-                        Ausführungszeiten, müssen sich also lohnen,
+                        Ausführungszeiten, müssen sich also lohnen
                     </li>
                 </ul>
             </section>
@@ -266,7 +277,7 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
         </section>
         <section>
             <section>
-                <h2>Macht Testing im Frontend überhaupt Sinn?</h2>
+                <h1>Ist Testen im Frontend sinnvoll?</h1>
                 <p class="fragment">⚠️ Achtung Spoiler</p>
                 <p class="fragment"><b class="highlight">Definitiv 😉</b></p>
             </section>
@@ -278,19 +289,18 @@ console.log(divide(10, 'a')); // Grenzfall: String als Eingabe
                     </li>
                     <li class="fragment">Abhängigkeiten werden nicht betrachten bzw gemockt</li>
                     <li class="fragment">Es können sehr einfach Grenzfälle getestet werden</li>
-                    <li class="fragment"><b class="highlight">Beispiel:</b> Prüfen, ob eine Pipe die erwartete
-                        Transformation durchführt
-                    </li>
-                    <li class="fragment"><b class="highlight">Tools:</b> z.B. mit Jest/Karma mit Angular Testing Library
-                        oder Spectator
+                    <li class="fragment"><b class="highlight">Tools:</b> z.B. mit <span class="highlight">Jest</span>
+                        oder <span class="highlight">Karma</span> mit <span
+                                class="highlight">Angular Testing Library</span> oder <span
+                                class="highlight">Spectator</span>
                     </li>
                 </ul>
             </section>
 
             <section>
-                <h4>Beispiel</h4>
+                <h3>Beispiel Unit Testing im Frontend</h3>
                 <p>Wir prüfen, ob eine Pipe die erwartete Transformation durchführt</p>
-                <pre><code class="typescript" data-line-numbers>
+                <pre><code class="typescript" data-line-numbers="2-5,14|6,13|7-9|10-12">// Angular Pipe
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({name: 'decimalFormat'})
@@ -307,9 +317,8 @@ export class DecimalFormatPipe implements PipeTransform {
             </section>
 
             <section class="custom-height-slide">
-                <h4>Beispiel</h4>
-                <p>Wir prüfen, ob eine Pipe die erwartete Transformation durchführt</p>
-                <pre><code class="typescript" data-line-numbers>// Test mit Jest
+                <h3>Beispiel Unit Testing im Frontend</h3>
+                <pre><code class="typescript" data-line-numbers="2|4,18|5|7-9|11-13|15-17">// Test mit Jest
 import { DecimalFormatPipe } from './decimal-format.pipe';
 
 describe('DecimalFormatPipe', () => {
@@ -329,27 +338,21 @@ describe('DecimalFormatPipe', () => {
 });</code></pre>
             </section>
             <section>
-                <h2>Wie kann ich Integration Tests im Frontend schreiben?</h2>
+                <h3>Wie schreibe ich Integration Tests im Frontend?</h3>
                 <ul>
-                    <li class="fragment"><b>DOM-Tests</b>: Überprüfen, ob die DOM-Struktur und Inhalte korrekt
+                    <li class="fragment"><span class="highlight">Snapshot-Tests</span>: Erfassen und Vergleichen des
+                        HTML-Outputs, um
+                        unerwartete Änderungen zu erkennen.
+                    </li>
+                    <li class="fragment"><span class="highlight">DOM-Tests</span>: Überprüfen, ob die DOM-Struktur und
+                        Inhalte korrekt
                         gerendert
                         werden.
                     </li>
-                    <li class="fragment"><b>Snapshot-Tests</b>: Erfassen und Vergleichen des HTML-Outputs, um
-                        unerwartete Änderungen zu erkennen.
-                    </li>
-                    <li class="fragment"><b>Component-Tests</b>: Testen von Komponenten in Isolation, aber mit
+                    <li class="fragment"><span class="highlight">Component-Tests</span>: Testen von Komponenten in
+                        Isolation, aber mit
                         Template-Rendering, um sicherzustellen, dass sie wie erwartet funktionieren.
                     </li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Component-Tests (Angular Testing Library, Jest, Karma)</h2>
-                <ul>
-                    <li class="fragment">Testet Komponenten in Isolation, aber mit Template-Rendering</li>
-                    <li class="fragment">Beispiel: Prüfen, ob ein Button-Click eine bestimmte Aktion auslöst</li>
-                    mit was? Cypress component testing --> wenn nicht auch mit jest snapshots möglich
                 </ul>
             </section>
 
@@ -364,9 +367,10 @@ describe('DecimalFormatPipe', () => {
                         Elementen, Farben, Typografie)
                     </li>
                 </ul>
+            </section>
+            <section>
                 <h3>Beispiel für einen Snapshot-Test mit Jest:</h3>
-                <pre><code class="typescript" data-line-numbers>
-import { render } from '@testing-library/angular';
+                <pre><code class="typescript" data-line-numbers="1|2|4,7|5|6">import { render } from '@testing-library/angular';
 import { MyComponent } from './my-component.component';
 
 test('MyComponent Snapshot', async () => {
@@ -375,33 +379,47 @@ test('MyComponent Snapshot', async () => {
 });
     </code></pre>
             </section>
-
             <section>
-                <h2>Snapshot Testing</h2>
-                <h3>Vorteile</h3>
+                <h3>Beispiel für einen Snapshot-Test mit Jest:</h3>
+                <pre><code class="typescript fragment" data-line-numbers>// MyComponent
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-my-component',
+  template: `<div>Hello World</div>`
+})
+export class MyComponent {}
+    </code></pre>
+                <pre><code class="html fragment" data-line-numbers>exports[`MyComponent Snapshot 1`] = `
+<div>
+  <div>Hello World</div>
+</div>
+`;
+    </code></pre>
+            </section>
+            <section>
+                <h2>Snapshot Testing - Vorteile</h2>
                 <ul>
                     <li class="fragment">Einfache Implementierung</li>
                     <li class="fragment">Schnelle Überprüfung von UI-Änderungen</li>
                     <li class="fragment">Automatische Erkennung von unbeabsichtigten Änderungen</li>
                 </ul>
-                <!--            </section>-->
-                <!--            <section>-->
-                <h3>Nachteile</h3>
+            </section>
+            <section>
+                <h2>Snapshot Testing - Nachteile</h2>
                 <ul>
-                    <li class="fragment">Kann zu falschen Positiven führen</li>
+                    <li class="fragment">Kann zu False Positives/False Negatives führen</li>
                     <li class="fragment">Snapshots können groß und unübersichtlich werden</li>
                     <li class="fragment">Erfordert regelmäßige Aktualisierung der Snapshots</li>
+                    <li class="fragment">Wird bei Major-Version-Updates oft wirkungslos</li>
                 </ul>
             </section>
 
             <section>
                 <h2>Domain Object Model (DOM) Testing</h2>
-                <p><b class="highlight">Definition:</b> DOM-Tests sind Tests, die sicherstellen, dass
-                    JavaScript-Code
-                    korrekt mit dem Document Object Model
-                    (DOM) einer Webseite interagiert, indem er Elemente hinzufügt, entfernt oder verändert und dabei
-                    das
-                    Verhalten des Browsers simuliert.</p>
+                <p><b class="highlight">Definition:</b> DOM-Tests sind Tests, die sicherstellen, dass JavaScript-Code
+                    korrekt mit dem Document Object Model (DOM) einer Webseite interagiert und dabei das Verhalten des
+                    Browsers simulieren.</p>
             </section>
 
             <section>
@@ -417,83 +435,319 @@ test('MyComponent Snapshot', async () => {
                         korrekt angezeigt werden.
                     </li>
                     <li class="fragment">Wenn du sicherstellen möchtest, dass UI-Komponenten (wie Modals, Dropdowns
-                        oder
-                        Tooltips) korrekt funktionieren und anzeigen.
+                        oder Tooltips) korrekt funktionieren und anzeigen.
                     </li>
                 </ul>
             </section>
-            <section>
-                <h2>ButtonComponent</h2>
-                <pre><code class="typescript" data-line-numbers>
+            <section class="custom-height-slide">
+                <h2>DOM-Test Beispiel</h2>
+                <pre><code class="typescript" data-line-numbers="2|4-5,7-8,12|6|9-11">// Button Component
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-button',
-  template: `<button (click)="handleClick()">Klick mich!</button>`,
+  template: `<button (click)="handleClick()">
+                        Klick mich!</button>`,
 })
 export class ButtonComponent {
   handleClick() {
     console.log('Button wurde geklickt!');
   }
-}
-    </code></pre>
+}</code></pre>
             </section>
-
-            <section>
-                <h2>ButtonComponent Test</h2>
-                <pre><code class="typescript" data-line-numbers>
-import { render, fireEvent } from '@testing-library/angular';
+            <section class="custom-height-slide">
+                <h2>DOM-Test Beispiel</h2>
+                <pre><code class="typescript" data-line-numbers="1-2|5-6,17|7|8|10-11|13|15-16">import { render, fireEvent }
+                    from '@testing-library/angular';
 import { ButtonComponent } from './button.component';
 
-test('ButtonComponent sollte einen Konsolenausdruck bei Klick auslösen', async () => {
+test('ButtonComponent sollte einen Konsolenausdruck
+                    bei Klick auslösen', async () => {
   const { getByText } = await render(ButtonComponent);
   const button = getByText('Klick mich!');
 
   // Mock für console.log
   const consoleSpy = jest.spyOn(console, 'log');
 
-  // Klick-Event auslösen
   fireEvent.click(button);
 
-  // Überprüfen, ob console.log mit dem erwarteten Text aufgerufen wurde
-  expect(consoleSpy).toHaveBeenCalledWith('Button wurde geklickt!');
+  expect(consoleSpy)
+    .toHaveBeenCalledWith('Button wurde geklickt!');
 });
     </code></pre>
             </section>
             <section>
-                <h2>DOM Testing</h2>
-                <h3>Vorteile</h3>
+                <h2>DOM Testing - Vorteile</h2>
                 <ul>
                     <li class="fragment">Detaillierte Überprüfung der DOM-Struktur</li>
                     <li class="fragment">Simuliert Benutzerinteraktionen</li>
                     <li class="fragment">Erkennt Fehler in der Benutzeroberfläche</li>
                 </ul>
-                <!--            </section>-->
-                <!--            <section>-->
-                <h3>Nachteile</h3>
+            </section>
+            <section>
+                <h2>DOM Testing - Nachteile</h2>
                 <ul>
                     <li class="fragment">Komplexere Implementierung</li>
                     <li class="fragment">Kann langsamer sein als Snapshot-Tests</li>
                     <li class="fragment">Erfordert mehr Wartung</li>
+                    <li class="fragment">Bilder nicht die Realität ab</li>
                 </ul>
             </section>
 
             <section>
-                Integrationstests (z. B. mit Cypress oder Playwright)
-                Testet die Zusammenarbeit mehrerer Komponenten oder API-Interaktionen.
-                Beispiel: Prüfen, ob eine GraphQL-Abfrage korrekt verarbeitet und angezeigt wird.
+                <h2>Component Testing z.B. mit Cypress</h2>
+                <p class="fragment">Component Testing ermöglicht das Testen von isolierten UI-Komponenten
+                    (Black-Box-Testing)</p>
+            </section>
+            <section>
+                <h2>Vorteile von Component Tests</h2>
+                <ul>
+                    <li class="fragment">Näher an der Realität als Snapshot oder DOM Tests, aber einfachereres Setup als
+                        E2E Tests
+                    </li>
+                    <li class="fragment">Einfaches Debugging</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Nachteile von Component Tests</h2>
+                <ul>
+                    <li class="fragment"><span class="highlight">Isolierung:</span> Interaktionen mit anderen
+                        Komponenten oder dem Gesamtsystem können übersehen werden.
+                    </li>
+                    <li class="fragment"><span class="highlight">Komplexität:</span> Das Setup kann komplex sein,
+                        insbesondere bei vielen gemockten Abhängigkeiten.
+                    </li>
+                    <li class="fragment"><span class="highlight">Performance:</span> Können langsamer
+                        sein als Unit-Tests, da sie das Rendering und die Interaktion mit dem DOM beinhalten.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Beispiel für einen Component Test</h3>
+                <pre><code class="typescript" data-line-numbers="1|2|4,9|5,8|6|7">import { mount } from 'cypress/angular';
+import { MyComponent } from './my-component.component';
 
+describe('MyComponent', () => {
+  it('should render correctly', () => {
+    mount(MyComponent);
+    cy.get('h1').should('contain', 'Hello World');
+  });
+});
+    </code></pre>
             </section>
 
             <section>
                 <h2>End-To-End Tests</h2>
                 <p>Simulieren das echte Nutzererlebnis.</p>
                 <p>Testen ganzheitliche Geschäftsabläufe.</p>
-                <p><b>Ziel:</b> Aufdeckung von Fehlern aus Benutzersicht.</p>
+                <li class="fragment"><b class="highlight">Tools:</b> z.B. mit <span class="highlight">Cypress</span>
+                    oder <span class="highlight">Playwright</span></li>
+                <p><b>Ziel:</b> Aufdeckung von Fehlern aus Benutzersicht, möglichst nah an der Realität</p>
                 <p><b>Nachteil:</b> E2E-Tests sind teuer und haben lange Ausführungszeiten, müssen sich also lohnen.
                 </p>
             </section>
 
+            <section>
+                <p>Zurück zu der Frage:</p>
+                <h1 class="fragment">Ist Testen im Frontend sinnvoll?</h1>
+            </section>
+            <section>
+                <h2>Kosten-Nutzen-Analyse des Testens im Frontend</h2>
+                <p class="fragment"><span class="highlight">Arbeitsgeschwindigkeit:</span> Tests erhöhen die Effizienz
+                    und Geschwindigkeit der Entwicklung.</p>
+                <p class="fragment"><span class="highlight">Vertrauen in die Software:</span> Tests schaffen Vertrauen
+                    in die Stabilität und Zuverlässigkeit der Software bei allen Stakeholdern.</p>
+            </section>
+            <section>
+                <h2>Aber:</h2>
+                <p class="fragment">Frontend-Bugs sind oft nicht so gravierend und eher seltener als Bugs im
+                    Backend.</p>
+            </section>
+            <section>
+                <h2>Wie viel sollte ich also in FE-Tests mindestens investieren?</h2>
+                <ul>
+                    <li class="fragment"><span class="highlight">Smoke-Tests:</span> Tests, die sicherstellen, dass die
+                        Software überhaupt läuft.
+                    </li>
+                    <li class="fragment"><span class="highlight">Kritische Prozesse:</span>
+                        <ul>
+                            <li class="fragment">Benutzerinteraktion (bspw. Speichern von Daten aus Forms)</li>
+                            <li class="fragment">Korrekte Darstellung wichtiger UI-Elemente</li>
+                            <li class="fragment">Integration mit dem Backend (API)</li>
+                            <li class="fragment">Routing & Navigation</li>
+                            <li class="fragment">Fehlerfälle (Validierung, Fehlermeldungen, Nutzer macht Unfug)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Instanziierungstests: Ja oder Nein?</h2>
+                <p class="fragment">Instanziierungstests prüfen, ob eine Komponente oder ein Service korrekt erstellt
+                    werden kann.</p>
+                <p class="fragment">Sie sind nützlich, um sicherzustellen, dass alle Abhängigkeiten korrekt aufgelöst
+                    werden.</p>
+            </section>
+            <section>
+                <h2>Beispiel Instanziierungstest</h2>
+                <pre class="fragment"><code class="typescript" data-line-numbers="4-10,15|12-14">import { TestBed } from '@angular/core/testing';
+import { MyService } from './my-service.service';
+
+describe('MyService', () => {
+  let service: MyService;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(MyService);
+  });
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+});</code></pre>
+            </section>
+            <section>
+                <h2>Instanziierungstests - Pro</h2>
+                <ul>
+                    <li class="fragment">Hilft, bei der Initialisierung von Angular-Anwendungen sicherzustellen, dass
+                        keine grundlegenden Fehler im Setup existieren (Smoke-Test).
+                    </li>
+                    <li class="fragment">Besonders in komplexen Angular-Anwendungen kann es sinnvoll sein, zu prüfen, ob
+                        alle notwendigen Abhängigkeiten korrekt aufgelöst und injiziert werden.
+                    </li>
+                    <li class="fragment">Test-Setup existiert dann schon. Kleinere Hürde für andere Entwickler, Tests zu
+                        ergänzen.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Instanziierungstests - Kontra</h2>
+                <ul>
+                    <li class="fragment">Unnötig, wenn du davon ausgehst, dass der Kompilierprozess und Angular's
+                        Dependency Injection gut funktioniert
+                    </li>
+                    <li class="fragment">Kann Zeit verschwenden</li>
+                    <li class="fragment">Müssen auf Dauer evtl. gewartet werden (bspw. bei Umstieg auf ein anderes
+                        Testing Tool), ohne großen Mehrwert zu bieten
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Instanziierungstests: Ja oder Nein?</h2>
+                <p class="fragment">was denkt ihr darüber?</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Quality Gate: Testabdeckung</h2>
+                <p class="fragment">Testabdeckung ist ein Maß dafür, wie viel Prozent des Codes durch Tests abgedeckt
+                    sind.</p>
+            </section>
+            <section>
+                <h3>Beispiel 1</h3>
+                <p class="fragment">Ein Team startet auf "Grüner Wiese" und die Projektleitung legt eine
+                    Mindesttestabdeckung des Codes von 80 % durch Unit-Tests fest.</p>
+
+                <h3 class="fragment">Beispiel 2</h3>
+                <p class="fragment">Ein neues Team wartet eine alte Software mit 20 % Coverage und soll nun nachträglich
+                    die Coverage durch Unit-Tests auf 65 % hochzuziehen.</p>
+
+                <h3 class="fragment">Was denkt ihr darüber - Sinnvoll oder nicht?</h3>
+            </section>
+            <section>
+                <h2>Gefahren der Testabdeckung</h2>
+                <ul>
+                    <li class="fragment">Falsche Sicherheit - Infrastrukturkritischer Code ist komplex und wird nicht
+                        getestet (z.B. DB Verbindung)
+                    </li>
+                    <li class="fragment">Code wird schlecht getestet, um schnell fertig zu werden</li>
+                    <li class="fragment">Unwichtige Stellen werden getestet, nur um nötige Coverage zu erreichen</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Was sind sinnvolle Fragen zur Testabdeckung?</h2>
+                <ul>
+                    <li class="fragment">Wie können wir die Testabdeckung kontinuierlich überwachen und verbessern?</li>
+                    <li class="fragment">Welche Metriken verwenden wir, um die Qualität unserer Tests zu bewerten?</li>
+                    <li class="fragment">Wie gehen wir mit nicht testbarem Code um, z.B. externen Abhängigkeiten oder
+                        Legacy-Code?
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Wie schreibe ich gute Tests?</h2>
+            </section>
+            <section>
+                <h2>Arrange, Act, Assert</h2>
+                <p class="fragment">Ein Muster zur Strukturierung von Tests</p>
+                <ul>
+                    <li class="fragment"><b>Arrange:</b> Bereite die Testdaten und den Zustand vor.</li>
+                    <li class="fragment"><b>Act:</b> Führe die zu testende Aktion aus.</li>
+                    <li class="fragment"><b>Assert:</b> Überprüfe das Ergebnis.</li>
+                </ul>
+            </section>
+            <section>
+    <pre><code class="typescript" data-line-numbers="4-6|8-9|11-12">import { add } from './math';
+
+test('add function should return correct sum', () => {
+    // Arrange
+    const a = 2;
+    const b = 3;
+
+    // Act
+    const result = add(a, b);
+
+    // Assert
+    expect(result).toBe(5);
+});
+    </code></pre>
+            </section>
+            <section>
+                <h2>Halte Tests so einfach wie möglich</h2>
+                <p class="fragment">Je komplexer ein Test ist, desto schwerer ist er zu warten.</p>
+            </section>
+            <section>
+                <h2>Teste immer nur eine Funktionalität pro Test</h2>
+                <p class="fragment">So weißt du immer direkt, was fehlgeschlagen ist.</p>
+            </section>
+            <section>
+                <h2>Halte die Anzahl der Assertions gering</h2>
+                <p class="fragment">Versuche die Anzahl von Expect-Statements (Assertions) gering zu halten, außer sie
+                    testen tatsächlich
+                    die selbe Sache.</p>
+            </section>
+            <section>
+                <h2>Teste nichts, was du nicht ändern kannst.</h2>
+                <p class="fragment">Teste keinen "Third-Party-Code" (externe Libraries, Packages, Frameworks, Native
+                    Node.js Packages,
+                    Browser APIs etc.).</p>
+            </section>
+
+        </section>
+        <section>
+            <section>
+                <h2>Stubs, Spies und Mocks</h2>
+            </section>
+            <section>
+                <h2>Stubs</h2>
+                <p class="fragment">Gibt bei Aufruf immer denselben statischen Return-Wert zurück. Wenn uns vollkommen
+                    egal ist, wie die
+                    Entität sich verhält. Hauptsache keine Exception.</p>
+            </section>
+            <section>
+                <h2>Spies</h2>
+                <p class="fragment">"Wrapper" um Funktionen oder leeren Ersatz für Funktionen, die uns erlauben zu
+                    verfolgen, ob und wie
+                    eine Funktion aufgerufen wurde.</p>
+            </section>
+            <section>
+                <h2>Mocks</h2>
+                <p class="fragment">Ein Ersatz für eine API, die uns stattdessen ein test-spezifisches Verhalten
+                    liefert.</p>
+            </section>
         </section>
         <section>
             <section data-background-image="./images/stars.jpg">
@@ -508,9 +762,9 @@ test('ButtonComponent sollte einen Konsolenausdruck bei Klick auslösen', async 
                 <h2>Und was macht Cypress?</h2>
                 <img class="r-stretch" src="images/keine-harten-grenzen-cypress.png"/>
             </section>
-            <section data-background-image="./images/vacation.jpg" class="has-dark-background">
+            <section>
                 <h1>Developer Experience</h1>
-                <h2>Die Cypress Philosophie</h2>
+                <h2 class="fragment">Die Cypress Philosophie</h2>
             </section>
             <section>
                 <h2>Batteries included - Das Cypress Setup</h2>
@@ -534,20 +788,20 @@ test('ButtonComponent sollte einen Konsolenausdruck bei Klick auslösen', async 
             </section>
             <section>
                 <h2>Sehr einfaches Mocking/ Stubbing</h2>
-                <p>Wenn die Realität mal wieder nicht perfekt ist...</p>
+                <p class="fragment">Wenn die Realität mal wieder nicht perfekt ist...</p>
             </section>
             <section>
                 <h2>Wundervolle Dokumentation</h2>
                 <ul>
-                    <li>... um Cypress zu lernen</li>
-                    <li>... um die Best Practices zu erfahren</li>
-                    <li>... um CI aufzusetzen</li>
-                    <li>...</li>
+                    <li class="fragment">... um Cypress zu lernen</li>
+                    <li class="fragment">... um die Best Practices zu erfahren</li>
+                    <li class="fragment">... um CI aufzusetzen</li>
+                    <li class="fragment">...</li>
                 </ul>
             </section>
         </section>
-        <section data-background-image="./images/stars.jpg">
-            <section class="has-dark-background">
+        <section>
+            <section>
                 <h1>Cypress Setup</h1>
             </section>
             <section>
@@ -556,12 +810,12 @@ test('ButtonComponent sollte einen Konsolenausdruck bei Klick auslösen', async 
                     $ npx  cypress  open
                 </code></pre>
             </section>
-            <section class="has-dark-background">
+            <section>
                 <h1>Let's see the magic</h1>
             </section>
         </section>
         <section>
-            <section data-background-image="./images/stars.jpg">
+            <section>
                 <h1>Testaufbau</h1>
             </section>
             <section>
@@ -840,7 +1094,7 @@ cy.wait('@getData').then((interception) => {
             </section>
         </section>
 
-        <section data-background-image="./images/stars.jpg">
+        <section>
             <section>
                 <h2>Best Practices</h2>
             </section>
