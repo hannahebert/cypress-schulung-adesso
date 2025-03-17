@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "decktape": "^3.14.0",
     "highlight.js": "^11.11.1",
+    "reveal": "^0.0.4",
     "reveal.js": "^5.1.0"
   }
 }

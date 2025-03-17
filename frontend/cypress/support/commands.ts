@@ -1,37 +1,27 @@
 /// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+
+declare namespace Cypress {
+  interface Chainable {
+    login(email: string, password: string): void;
+
+    dataCy(testid: string): Chainable<JQuery<HTMLElement>>;
+  }
+}
+
+Cypress.Commands.add('login', (username: string,
+                               password: string): void => {
+  cy.visit('/login');
+  cy.get('[data-cy="username"]')
+    .type('cypress', {log: false});
+  cy.get('[data-cy="password"]')
+    .type('bingo', {log: false});
+
+  cy.get('[data-cy="submit-button"]')
+    .click()
+    .should('not.exist');
+
+  cy.url()
+    .should('eq', `${Cypress.config().baseUrl}/bingo-board`);
+
+  cy.get('.board-title').should('have.text', 'Bingo');
+});
