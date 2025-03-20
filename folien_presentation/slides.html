@@ -415,28 +415,28 @@ cy.get('[data-cy="login-form"]')
         </section>
 
         <section>
-            <section>
-                <h2>Custom Cypress Command: Login</h2>
-                <pre><code class="typescript" data-line-numbers="1-2,17|3-12|13-14|16"
-                >Cypress.Commands.add('login',(username: string,
-                    password: string): void => {
-  cy.visit('login');
-  cy.get('[data-cy="username"]')
-    .type('cypress', {log: false});
-  cy.get('[data-cy="password"]')
-    .type('bingo', {log: false});
+            <h1>Übung 1: Login</h1>
+            <h2>Zum Repo auf GitHub</h2>
+            <img class="r-stretch" src="images/qr-code-repo.png"/>
+            <p>https://github.com/hannahebert/cypress-schulung-adesso</p>
+        </section>
+        <section>
+            <h2>Get vs. Find vs. contains </h2>
+            <p><strong>cy.get()</strong> - Findet ein Element</p>
+            <p><strong>cy.find()</strong> - Findet ein Kind-Element</p>
+            <p><strong>cy.contains()</strong> - Findet ein Element anhand des Textes</p>
 
-  cy.get('[data-cy="submit-button"]')
-    .click()
-    .should('not.exist');
+            <pre data-id="code" class="javascript fragment"><code data-line-numbers class="hljs"
+            >cy.contains('Bingo');
 
-  cy.url()
-    .should('eq', `${Cypress.config().baseUrl}/bingo-board`);
+cy.get('[data-cy="login-form"]')
+    .find('h3')
+    .should('contain', 'Anmeldung');
+                </code></pre>
+        </section>
 
-  cy.get('.board-title').should('have.text', 'Bingo');
-});
-    </code></pre>
-            </section>
+        <section>
+            <h1>Übung 2: Bingo</h1>
         </section>
 
         <section>
@@ -562,6 +562,9 @@ cy.get('[data-cy="login-form"]')
   });
                 </code></pre>
             </section>
+        </section>
+
+        <section>
             <section>
                 <h2>cy.intercept – Netzwerkanfragen steuern</h2>
                 <p><strong>Zweck:</strong></p>
@@ -628,6 +631,10 @@ cy.wait('@getData').then((interception) => {
                 <h2>Best Practices</h2>
             </section>
             <section>
+                <h2>Fachlich sinnvolle Tests</h2>
+                <p>Teste nur das, was wirklich wichtig ist - sprich dazu mit POs/Stakeholdern/Endnutzern.</p>
+            </section>
+            <section>
                 <h2>Resiliente Tests</h2>
                 <p>Verwende stabile Selektoren (z.B. `data-cy`), um auf UI-Elemente zuzugreifen.</p>
             </section>
@@ -668,7 +675,6 @@ cy.wait('@getData').then((interception) => {
         <section>
             <section>
                 <h2>Danke fürs Zuhören :)</h2>
-                <p>Bei kleineren Nachfragen meldet euch gerne unter hannah.ebert@adesso.de</p>
             </section>
         </section>
     </div>
