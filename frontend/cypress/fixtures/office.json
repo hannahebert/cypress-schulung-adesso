@@ -1,0 +1,127 @@
+[
+  {
+    "id": 2,
+    "category": "office",
+    "text": "ERSETZT"
+  },
+  {
+    "id": 5,
+    "category": "office",
+    "text": "Burnt food in microwave"
+  },
+  {
+    "id": 6,
+    "category": "office",
+    "text": "Smelly lunch"
+  },
+  {
+    "id": 22,
+    "category": "office",
+    "text": "Someone steals your parking slot"
+  },
+  {
+    "id": 19,
+    "category": "office",
+    "text": "Someone steals your parking slot"
+  },
+  {
+    "id": 14,
+    "category": "office",
+    "text": "Called by the wrong name"
+  },
+  {
+    "id": 23,
+    "category": "office",
+    "text": "Someone steals your parking slot"
+  },
+  {
+    "id": 18,
+    "category": "office",
+    "text": "Coffee is out"
+  },
+  {
+    "id": 24,
+    "category": "office",
+    "text": "Someone steals your parking slot"
+  },
+  {
+    "id": 25,
+    "category": "office",
+    "text": "Someone comments on the weather"
+  },
+  {
+    "id": 1,
+    "category": "office",
+    "text": "Coworker comes in late"
+  },
+  {
+    "id": 16,
+    "category": "office",
+    "text": "Awkward moment in the restroom"
+  },
+  {
+    "id": 3,
+    "category": "office",
+    "text": "A \"reply all\" email comes in"
+  },
+  {
+    "id": 12,
+    "category": "office",
+    "text": "Kid noises during a meeting"
+  },
+  {
+    "id": 7,
+    "category": "office",
+    "text": "A joke is told"
+  },
+  {
+    "id": 17,
+    "category": "office",
+    "text": "Coffee machine needs cleaning"
+  },
+  {
+    "id": 11,
+    "category": "office",
+    "text": "Someone complains it is too cold"
+  },
+  {
+    "id": 13,
+    "category": "office",
+    "text": "HR Mail"
+  },
+  {
+    "id": 4,
+    "category": "office",
+    "text": "Meeting starts late"
+  },
+  {
+    "id": 8,
+    "category": "office",
+    "text": "printer issues"
+  },
+  {
+    "id": 9,
+    "category": "office",
+    "text": "Someone forgets to mute"
+  },
+  {
+    "id": 20,
+    "category": "office",
+    "text": "Someone steals your parking slot"
+  },
+  {
+    "id": 10,
+    "category": "office",
+    "text": "Someone complains it is too hot"
+  },
+  {
+    "id": 21,
+    "category": "office",
+    "text": "Someone steals your parking slot"
+  },
+  {
+    "id": 15,
+    "category": "office",
+    "text": "Birthday"
+  }
+]

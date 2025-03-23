@@ -1,6 +1,6 @@
 import {CyHttpMessages} from "cypress/types/net-stubbing";
 import IncomingHttpRequest = CyHttpMessages.IncomingHttpRequest;
-import {BingoField} from "./src/app/model/bingo-field.data";
+import {BingoField} from "../../src/app/model/bingo-field.data";
 
 describe('Bingo', () => {
 
@@ -32,10 +32,13 @@ describe('Bingo', () => {
     cy.get('@bingoFields').eq(8).click().should('have.class', 'selected');
     cy.get('@bingoFields').eq(9).click().should('have.class', 'selected');
 
-    /*    let numbers = [5, 6, 7, 8, 9];
-        numbers.forEach(index => {
-            cy.get('@bingoFields').eq(index).click().should('have.class', 'selected');
-          });*/
+/*
+    // Andere mögliche Schreibweisen:
+    let numbers = [5, 6, 7, 8, 9];
+    numbers.forEach(index => {
+      cy.get('@bingoFields').eq(index).click().should('have.class', 'selected');
+    });
+*/
 
     cy.get('[data-cy="winning-message"]').should('exist');
   })
